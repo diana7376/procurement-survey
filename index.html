@@ -1,0 +1,51 @@
+<!doctype html>
+<html lang="ro">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Date publice, legate · Chestionar</title>
+<meta name="description" content="Chestionar scurt (≈ 3 minute) despre folosirea datelor publice privind achizițiile din Moldova. Proiect de licență, FCIM, UTM.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@500;700&display=swap">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<header class="banner">
+  <div class="banner-inner">
+    <span class="brand" data-ro="Date publice, legate" data-ru="Открытые данные, связанные" data-en="Public data, linked">Date publice, legate</span>
+    <svg class="strip" width="220" height="20" viewBox="0 0 220 20" aria-hidden="true">
+      <path d="M4 10 H70 M80 10 H146 M156 10 H212" stroke="currentColor" stroke-width="1.6" stroke-dasharray="4 4" fill="none"></path>
+      <circle cx="4" cy="10" r="4"></circle><circle cx="75" cy="10" r="5"></circle><circle cx="151" cy="10" r="5"></circle><circle class="end" cx="214" cy="10" r="5"></circle>
+    </svg>
+    <span class="tagline" data-ro="Fiecare cifră, înapoi la fișierul oficial · Proiect de licență, FCIM, UTM" data-ru="Каждая цифра — к официальному файлу · Дипломный проект, FCIM, ТУМ" data-en="Every number, back to the official file · Bachelor project, FCIM, TUM">Fiecare cifră, înapoi la fișierul oficial · Proiect de licență, FCIM, UTM</span>
+    <div class="lang" role="group" aria-label="Limba / Язык / Language">
+      <button type="button" data-lang="ro" aria-pressed="true">RO</button>
+      <button type="button" data-lang="ru" aria-pressed="false">RU</button>
+      <button type="button" data-lang="en" aria-pressed="false">EN</button>
+    </div>
+  </div>
+</header>
+
+<main class="stage">
+  <form id="survey" class="card" novalidate autocomplete="off">
+    <div class="meta-row">
+      <span class="count" id="count"></span>
+      <div class="progress" role="progressbar" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0" id="progress"><i></i></div>
+      <span class="time" data-ro="≈ 3 minute" data-ru="≈ 3 минуты" data-en="≈ 3 minutes">≈ 3 minute</span>
+    </div>
+    <div id="screen" class="screen" aria-live="polite"></div>
+    <input type="text" name="website" id="website" class="hp" tabindex="-1" aria-hidden="true">
+    <div class="nav">
+      <button type="button" class="ghost" id="back"></button>
+      <span class="spacer"></span>
+      <button type="submit" class="primary" id="next"></button>
+    </div>
+  </form>
+  <p class="test-badge" id="testBadge" hidden>Test mode · not sent</p>
+</main>
+<script src="config.js"></script>
+<script src="questions.js"></script>
+<script src="app.js"></script>
+</body>
+</html>
