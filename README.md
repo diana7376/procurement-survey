@@ -23,6 +23,12 @@ If you change `Code.gs` later: Deploy → Manage deployments → edit → New ve
 
 ## 2. Publish with GitHub Pages
 
+**Live since 19 Nov 2026:** https://diana7376.github.io/procurement-survey/ (public repository `diana7376/procurement-survey`, branch `main`, root folder). Until `config.js` has the Apps Script URL, the live site runs in **test mode**: answers are not saved, so do not share the link before step 1 is done.
+
+To update the live site: change the files here in `Teza/survey-site/`, commit, then copy them into the `procurement-survey` repository (keep its `.nojekyll`) and push; Pages rebuilds in about a minute.
+
+How it was set up:
+
 The `Teza` repository is **private**, and GitHub Pages on a free account works only for public repositories. Use a separate public repository with only this folder:
 
 1. On GitHub: New repository, e.g. `procurement-survey`, **Public**.
