@@ -156,7 +156,7 @@
     lang = l; document.documentElement.lang = l;
     document.querySelectorAll(".lang button").forEach(b => b.setAttribute("aria-pressed", b.dataset.lang === l));
     document.querySelectorAll("[data-ro]").forEach(el => el.textContent = el.dataset[l] || el.dataset.ro);
-    document.title = { ro: "Date publice, legate · Chestionar", ru: "Открытые данные, связанные · Опрос", en: "Public data, linked · Survey" }[l];
+    document.title = { ro: "Chestionar despre banii publici din Moldova", ru: "Опрос о государственных деньгах в Молдове", en: "Survey on public money in Moldova" }[l];
     render();
   }
 
