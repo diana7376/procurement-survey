@@ -6,7 +6,7 @@ Questions: `questions.js` (same content as `docs/survey-questions.md`).
 | File | What it is |
 |---|---|
 | `index.html`, `style.css` | Page (design "Focus card"): a thin project banner, one centred card with one question at a time |
-| `questions.js` | All questions in Romanian, Russian and English, with skip logic; the start-screen facts |
+| `questions.js` | All questions in Romanian, Russian and English; the one-sentence project description on the start screen |
 | `app.js` | Survey engine: one question per screen, keys 1–9 and Enter, progress, sending |
 | `config.js` | The Google Apps Script URL (empty = test mode) |
 | `apps-script/Code.gs` | Receives answers and writes them to the sheet |
@@ -98,3 +98,7 @@ Respondents are journalists, monitors and citizens, not IT people, so every ques
 
 Note for the analysis: Q8 now asks how old the data may be ("cel mult o lună" = monthly is enough), the same thing
 as before in plainer words; the pass rule "≥ 70% choose monthly or less often" reads the codes monthly and quarterly.
+
+Start screen (21 Nov 2026): the three audit numbers (25 kinds of records in one file, 217 institutions written in several
+ways, 84% of the money found by a name search) were removed; they meant little to someone who has never used this data.
+They are in Teza commit `73397da` and in `evidence/outputs/questions_and_facts.md`.

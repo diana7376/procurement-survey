@@ -7,7 +7,7 @@
 // To add Daria's questions: fill in a QC entry and set enabled: true.
 
 window.SURVEY = {
-  version: "2026-11-21d",
+  version: "2026-11-21e",
   intro: {
     ro: { title: "Datele publice despre achiziții: cât de ușor le folosim?",
           body: "Acest chestionar face parte din trei lucrări de licență la Universitatea Tehnică a Moldovei. Vrem să aflăm cât de ușor găsesc oamenii informații despre banii publici: cine cumpără, ce cumpără, de la cine și cu cât. Durează aproximativ 7 minute și este anonim: nu vă cerem numele. Folosim doar totalurile, nu răspunsurile fiecărei persoane. Dacă acceptați o discuție scurtă, vă cerem un e-mail, păstrat separat și șters după aceea.",
@@ -20,15 +20,9 @@ window.SURVEY = {
           start: "Start", time: "≈ 7 minutes · anonymous" }
   },
   about: {
-    ro: { label: "Despre proiect", text: "Construim un site care adună într-un singur loc datele publice despre achiziții. Orice cifră de pe site poate fi verificată în documentul oficial din care provine.",
-          facts: [["25", "feluri de înregistrări amestecate într-un singur fișier anual de contracte"], ["217", "instituții scrise în mai multe feluri"], ["84%", "din banii unei instituții găsește, în medie, o căutare după nume"]],
-          note: "Măsurat pe fișierul oficial de contracte din 2024, date.gov.md." },
-    ru: { label: "О проекте", text: "Мы создаём сайт, который собирает в одном месте открытые данные о закупках. Любую цифру на сайте можно проверить по официальному документу, из которого она взята.",
-          facts: [["25", "видов записей перемешаны в одном годовом файле контрактов"], ["217", "учреждений записаны по-разному"], ["84%", "денег учреждения в среднем находит поиск по названию"]],
-          note: "Измерено на официальном файле контрактов за 2024 год, date.gov.md." },
-    en: { label: "About the project", text: "We are building a website that brings public procurement data together in one place. Any number on the site can be checked against the official document it comes from.",
-          facts: [["25", "kinds of records mixed in one yearly contracts file"], ["217", "institutions written in several ways"], ["84%", "of an institution's money is found, on average, by a search for its name"]],
-          note: "Measured on the official 2024 contracts file, date.gov.md." }
+    ro: { label: "Despre proiect", text: "Construim un site care adună într-un singur loc datele publice despre achiziții. Orice cifră de pe site poate fi verificată în documentul oficial din care provine." },
+    ru: { label: "О проекте", text: "Мы создаём сайт, который собирает в одном месте открытые данные о закупках. Любую цифру на сайте можно проверить по официальному документу, из которого она взята." },
+    en: { label: "About the project", text: "We are building a website that brings public procurement data together in one place. Any number on the site can be checked against the official document it comes from." }
   },
   done: {
     ro: { title: "Mulțumim!", body: "Răspunsurile au fost trimise. Ne ajută să construim un site în care orice cifră poate fi verificată în documentul oficial." },

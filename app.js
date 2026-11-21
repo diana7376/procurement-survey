@@ -45,9 +45,7 @@
       const x = S.intro[lang];
       const ab = S.about[lang];
       sc.innerHTML = `<h1>${esc(x.title)}</h1><p class="body">${esc(x.body)}</p>`
-        + `<section class="about"><h2>${esc(ab.label)}</h2><p class="body">${esc(ab.text)}</p>`
-        + `<div class="facts">${ab.facts.map(([n, t]) => `<div class="fact"><b>${esc(n)}</b><span>${esc(t)}</span></div>`).join("")}</div>`
-        + `<small>${esc(ab.note)}</small></section>`;
+        + `<section class="about"><h2>${esc(ab.label)}</h2><p class="body">${esc(ab.text)}</p></section>`;
       $("next").textContent = x.start; $("next").disabled = false; return;
     }
     if (cur === "done") {
