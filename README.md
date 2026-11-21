@@ -94,6 +94,7 @@ Respondents are journalists, monitors and citizens, not IT people, so every ques
 | QB11 | Căutare avansată · Filtre · Export CSV/Excel · Grafice interactive · Alerte · API | Căutare după mai multe criterii deodată · Filtre (de ex. după an, raion sau instituție) · Descărcare în Excel · Grafice pe care le pot explora · Mesaje când apar date noi · Acces pentru programatori (API) |
 | QB12 | Ce timp de încărcare/procesare a datelor ați considera acceptabil? | Cât ați aștepta, cel mult, până se încarcă o pagină cu rezultate? |
 | Q11 | …un scurt interviu de 15–20 min? | …o scurtă discuție online (15–20 de minute) cu noi? |
+| About, Q7b, thank-you (later the same day) | …și arată, lângă fiecare cifră, documentul oficial din care provine. | Orice cifră de pe site poate fi verificată în documentul oficial din care provine. (Q7b: vă permite să verificați orice cifră în documentul oficial din care provine) |
 
 Note for the analysis: Q8 now asks how old the data may be ("cel mult o lună" = monthly is enough), the same thing
 as before in plainer words; the pass rule "≥ 70% choose monthly or less often" reads the codes monthly and quarterly.
