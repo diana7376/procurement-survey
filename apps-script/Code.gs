@@ -21,7 +21,7 @@ function doPost(e) {
     const answers = data.answers || {};
     let header = sheet.getLastRow() ? sheet.getRange(1, 1, 1, sheet.getLastColumn()).getValues()[0] : [];
     if (!header.length) { header = FIXED.slice(); }
-    Object.keys(answers).sort().forEach(k => { if (header.indexOf(k) === -1) header.push(k); });
+    Object.keys(answers).forEach(k => { if (header.indexOf(k) === -1) header.push(k); });   // the order the questions were answered = question order
     sheet.getRange(1, 1, 1, header.length).setValues([header]).setFontWeight("bold");
     sheet.setFrozenRows(1);
 
