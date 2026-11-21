@@ -15,7 +15,7 @@
   };
   const COL = { ro: 1, en: 2, ru: 3 };
   const L = o => o[COL[lang]] || o[1];          // label of an option or row in the current language
-  let lang = "ro", step = 0, answers = {}, email = "", t0 = 0, sent = false;
+  let lang = "ro", step = 0, answers = {}, email = "", t0 = 0, sent = false, sending = false;
   const $ = id => document.getElementById(id);
   const esc = s => String(s).replace(/[&<>"]/g, c => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", "\"": "&quot;" }[c]));
 
@@ -34,6 +34,7 @@
   }
 
   function render() {
+    if (sending && !sent) return;                                   // keep the screen still while the answer is being sent
     const f = flow(), cur = f[step], sc = $("screen"), qs = f.length - 2;
     sc.classList.remove("enter"); void sc.offsetWidth; sc.classList.add("enter");
     const pct = cur === "intro" ? 0 : cur === "done" ? 100 : Math.round(step / (qs + 1) * 100);
@@ -136,7 +137,8 @@
   }
 
   async function submit() {
-    if (sent) return;
+    if (sent || sending) return;                                   // one answer per person: no second send while the first is on its way
+    sending = true;
     const btn = $("next"); btn.disabled = true; btn.textContent = UI[lang].sending;
     const body = payload();
     try {
@@ -145,6 +147,7 @@
       sent = true; try { localStorage.setItem("survey-sent", S.version); } catch (e) {}
       step = flow().length - 1; render();
     } catch (e) {
+      sending = false;
       const er = $("err"); er.textContent = UI[lang].fail; er.hidden = false; btn.disabled = false; btn.textContent = UI[lang].send;
     }
   }
