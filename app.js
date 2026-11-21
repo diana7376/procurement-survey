@@ -66,6 +66,8 @@
       }).join("") + `</div>`;
       if (q.type === "interview" && answers[q.id] === "yes")
         h += `<label class="email"><small>${esc(q.email[lang])}</small><input type="email" id="email" inputmode="email" value="${esc(email)}" placeholder="nume@exemplu.md"></label>`;
+      if (q.followUp && answers[q.id] === q.followUp.on)     // optional "if yes, describe" box under a single-choice question
+        h += `<label class="email"><small>${esc(q.followUp[lang])}</small><textarea id="fu" maxlength="1000">${esc(answers[q.id + "_text"] || "")}</textarea></label>`;
     }
     if (q.type === "scale") {
       h += `<div class="ends" aria-hidden="true"><span>1 · ${esc(q.low[lang])}</span><span>5 · ${esc(q.high[lang])}</span></div><div class="scale">` + q.rows.map(r => {
@@ -89,11 +91,17 @@
     sc.querySelectorAll(".opt").forEach(b => b.onclick = () => {
       const v = b.dataset.v;
       if (q.type === "multi") {
-        const a = new Set(answers[q.id] || []); a.has(v) ? a.delete(v) : a.add(v); answers[q.id] = [...a];
-        b.setAttribute("aria-checked", a.has(v)); refresh(q);
+        const a = new Set(answers[q.id] || []);
+        const ex = q.exclusive || [];
+        if (a.has(v)) a.delete(v);
+        else if (ex.includes(v)) { a.clear(); a.add(v); }                 // "none" clears the other answers
+        else { ex.forEach(x => a.delete(x)); a.add(v); }                  // any other answer clears "none"
+        answers[q.id] = [...a];
+        sc.querySelectorAll(".opt").forEach(x => x.setAttribute("aria-checked", a.has(x.dataset.v))); refresh(q);
       } else {
         answers[q.id] = v;
         if (q.type === "interview") { render(); if (v === "yes") $("email")?.focus(); return; }
+        if (q.followUp) { render(); if (v === q.followUp.on) $("fu")?.focus(); return; }
         sc.querySelectorAll(".opt").forEach(x => x.setAttribute("aria-checked", x === b)); refresh(q);
         if (!matchMedia("(prefers-reduced-motion: reduce)").matches) setTimeout(() => { if (answers[q.id] === v) go(1); }, 280);
       }
@@ -104,6 +112,7 @@
     });
     const ta = $("txt"); if (ta) ta.oninput = () => { answers[q.id] = ta.value.slice(0, 1000); };
     const em = $("email"); if (em) em.oninput = () => { email = em.value.trim(); };
+    const fu = $("fu"); if (fu) fu.oninput = () => { answers[q.id + "_text"] = fu.value.slice(0, 1000); };
   }
 
   function go(d) {
@@ -119,11 +128,13 @@
   }
 
   function payload() {
-    const keep = new Set(flow().filter(x => typeof x === "object").flatMap(q => q.type === "scale" ? q.rows.map(r => q.id + r[0]) : [q.id]));
+    const keep = new Set(flow().filter(x => typeof x === "object").flatMap(q => q.type === "scale" ? q.rows.map(r => q.id + r[0])
+      : q.followUp && answers[q.id] === q.followUp.on ? [q.id, q.id + "_text"] : [q.id]));
     const out = {};
     for (const [k, v] of Object.entries(answers)) if (keep.has(k)) out[k] = Array.isArray(v) ? v.join(";") : v;
+    const iq = S.questions.find(q => q.type === "interview");
     return { v: S.version, lang, duration_s: t0 ? Math.round((Date.now() - t0) / 1000) : null, answers: out,
-             contact: answers.Q11 === "yes" && email ? { email, role: answers.Q1 || "" } : null, website: $("website").value };
+             contact: iq && answers[iq.id] === "yes" && email ? { email, role: answers.Q1 || "" } : null, website: $("website").value };
   }
 
   async function submit() {

@@ -43,7 +43,7 @@ Nothing in this folder is private: no answers are stored in the repository. The 
 - [ ] Daniel's and Daria's questions added in `questions.js` (set `enabled: true`) and in `docs/survey-questions.md`
 - [ ] Romanian proofread
 - [ ] Pass rules fixed in `docs/survey-questions.md`
-- [ ] Pilot with 2 people on a phone and a laptop: under 4 minutes?
+- [ ] Pilot with 2 people on a phone and a laptop: about 8 minutes?
 - [ ] Test rows deleted from the sheet
 - [ ] Open `?test` to try the site without sending anything
 
