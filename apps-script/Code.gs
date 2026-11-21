@@ -1,3 +1,4 @@
+/** @OnlyCurrentDoc */   // the script may open only the spreadsheet it is attached to, not the rest of Drive
 /**
  * Receives one survey answer (JSON, sent as text/plain) and appends it to the bound Google Sheet.
  * Tab "responses": one row per answer; new question IDs become new columns automatically.
