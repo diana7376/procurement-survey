@@ -43,7 +43,7 @@ Nothing in this folder is private: no answers are stored in the repository. The 
 - [ ] Daniel's and Daria's questions added in `questions.js` (set `enabled: true`) and in `docs/survey-questions.md`
 - [ ] Romanian proofread
 - [ ] Pass rules fixed in `docs/survey-questions.md`
-- [ ] Pilot with 2 people on a phone and a laptop: about 8 minutes?
+- [ ] Pilot with 2 people on a phone and a laptop: about 7 minutes?
 - [ ] Test rows deleted from the sheet
 - [ ] Open `?test` to try the site without sending anything
 
@@ -52,3 +52,19 @@ Nothing in this folder is private: no answers are stored in the repository. The 
 - Answers are anonymous.
 - E-mails, only from people who ask for an interview, go to a separate "contacts" tab, with no link to their answers. Delete that tab after the interviews.
 - Do not commit any export of the sheet to git.
+
+## Earlier wording of changed questions (kept for reference)
+
+Changed on 21 Nov 2026 after the review of the final question set (Daniel's version of 20 Nov, Teza commit `0203743`).
+Full earlier versions are in git: 19 Nov `ead2b98` (11 questions) and 20–21 Nov `0203743` (23 questions).
+Answer codes did not change, so answers stay comparable; removed questions keep their IDs free (no reuse).
+
+| ID | Wording before 21 Nov (RO / EN / RU) | Now | Why |
+|---|---|---|---|
+| Q1 | În ce domeniu activați? / What field do you work in? / В какой сфере вы работаете? | În ce calitate răspundeți? | "Interes personal" and "Cercetare sau studii" are not fields of work; the 19 Nov wording fits every answer |
+| Q7a | Vizualizarea contractelor filtrate după o companie/instituție / Viewing contracts filtered by a company/institution / Просмотр контрактов с фильтром по компании/учреждению | Contracts already linked to companies and institutions, however their names are written | Filtering is an interface feature (asked in QB11 "Filtre"); Part A needs the priority of linking (FR-A8, FR-A9) |
+| Q7c | Istoricul datelor / Data history / История данных | A company's details on a past date (e.g. on the contract date) | Too vague to decide Must or Should for company history (FR-A11) |
+| Q8 | Ce rată de actualizare a datelor ați prefera? / How often would you prefer the data to be updated? / Какую частоту обновления данных вы бы предпочли? | At minimum, how up to date must the data be for your work? | A preference pulls answers towards "daily"; the pass rule and constraint C3 need the minimum that is enough |
+| QB4 | Ce platforme utilizați în prezent pentru a găsi informații despre achizițiile publice? (mai multe: date.gov.md · MTender · OpenMoney.md · Site-urile instituțiilor · Altele · Nu folosesc niciuna) / Which platforms do you currently use to find information about public procurement? | Removed | Same as Q3 ("Unde ați căutat?", same options); Part B reads Q3 |
+| QB5 | Cât timp vă ia, în medie, să găsiți o informație concretă despre achiziții publice? (Sub 15 minute · 15–60 minute · 1–3 ore · Mai mult de 3 ore) / On average, how long does it take you to find a specific piece of information about public procurement? | Removed | Same as Q5 (with different time bands); Part B reads Q5 |
+| QB8 | Care este cea mai mare dificultate în procesul de căutare a datelor necesare? (several answers) | Same question, one answer | "The biggest difficulty" with several answers does not rank anything; Q4 already rates each difficulty |

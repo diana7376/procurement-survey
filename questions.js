@@ -5,17 +5,17 @@
 // To add Daniel's / Daria's questions: fill in a QB/QC entry and set enabled: true.
 
 window.SURVEY = {
-  version: "2026-11-21",
+  version: "2026-11-21b",
   intro: {
     ro: { title: "Datele publice despre achiziții: cât de ușor le folosim?",
-          body: "Acest chestionar face parte din trei teze de licență la Universitatea Tehnică a Moldovei despre datele deschise privind achizițiile publice. Durează aproximativ 8 minute și este anonim: nu vă cerem numele. Răspunsurile sunt folosite doar agregat. Dacă acceptați un interviu, vă cerem un e-mail, păstrat separat de răspunsuri și șters după interviuri.",
-          start: "Începe", time: "≈ 8 minute · anonim" },
+          body: "Acest chestionar face parte din trei teze de licență la Universitatea Tehnică a Moldovei despre datele deschise privind achizițiile publice. Durează aproximativ 7 minute și este anonim: nu vă cerem numele. Răspunsurile sunt folosite doar agregat. Dacă acceptați un interviu, vă cerem un e-mail, păstrat separat de răspunsuri și șters după interviuri.",
+          start: "Începe", time: "≈ 7 minute · anonim" },
     ru: { title: "Открытые данные о госзакупках: насколько легко ими пользоваться?",
-          body: "Этот опрос — часть трёх дипломных работ в Техническом университете Молдовы об открытых данных о государственных закупках. Он займёт около 8 минут и анонимен: мы не спрашиваем ваше имя. Ответы используются только в обобщённом виде. Если вы согласитесь на интервью, мы попросим e-mail; он хранится отдельно от ответов и удаляется после интервью.",
-          start: "Начать", time: "≈ 8 минут · анонимно" },
+          body: "Этот опрос — часть трёх дипломных работ в Техническом университете Молдовы об открытых данных о государственных закупках. Он займёт около 7 минут и анонимен: мы не спрашиваем ваше имя. Ответы используются только в обобщённом виде. Если вы согласитесь на интервью, мы попросим e-mail; он хранится отдельно от ответов и удаляется после интервью.",
+          start: "Начать", time: "≈ 7 минут · анонимно" },
     en: { title: "Public procurement data: how easy is it to use?",
-          body: "This survey is part of three bachelor theses at the Technical University of Moldova on open public procurement data. It takes about 8 minutes and is anonymous: we do not ask for your name. Answers are used only in aggregate. If you agree to an interview, we ask for an e-mail address, kept separately from the answers and deleted after the interviews.",
-          start: "Start", time: "≈ 8 minutes · anonymous" }
+          body: "This survey is part of three bachelor theses at the Technical University of Moldova on open public procurement data. It takes about 7 minutes and is anonymous: we do not ask for your name. Answers are used only in aggregate. If you agree to an interview, we ask for an e-mail address, kept separately from the answers and deleted after the interviews.",
+          start: "Start", time: "≈ 7 minutes · anonymous" }
   },
   about: {
     ro: { label: "Despre proiect", text: "Construim o platformă care adună fișierele publice despre achiziții, le leagă între ele și arată, pentru fiecare cifră, fișierul oficial, rândul și data.",
@@ -35,7 +35,7 @@ window.SURVEY = {
   },
   questions: [
     { id: "Q1", type: "single",
-      ro: "În ce domeniu activați?", en: "What field do you work in?", ru: "В какой сфере вы работаете?",
+      ro: "În ce calitate răspundeți?", en: "In what capacity are you answering?", ru: "В каком качестве вы отвечаете?",
       options: [
         ["journalist", "Jurnalism", "Journalism", "Журналистика"],
         ["monitor", "ONG sau monitorizare civică", "NGO or civic monitoring", "НКО или гражданский мониторинг"],
@@ -100,15 +100,15 @@ window.SURVEY = {
       ru: "Насколько полезными были бы следующие функции в единой платформе?",
       low: { ro: "deloc util", en: "not useful", ru: "бесполезно" }, high: { ro: "foarte util", en: "very useful", ru: "очень полезно" },
       rows: [
-        ["a", "Vizualizarea contractelor filtrate după o companie/instituție", "Viewing contracts filtered by a company/institution", "Просмотр контрактов с фильтром по компании/учреждению"],
+        ["a", "Contracte deja legate de companii și instituții, oricum ar fi scrise numele", "Contracts already linked to companies and institutions, however their names are written", "Контракты, уже связанные с компаниями и учреждениями, как бы ни были записаны их названия"],
         ["b", "Un link de la fiecare cifră la fișierul oficial, rândul și data", "A link from every number to the official file, row and date", "Ссылка от каждой цифры на официальный файл, строку и дату"],
-        ["c", "Istoricul datelor", "Data history", "История данных"],
+        ["c", "Datele unei companii la o dată din trecut (de ex. la data contractului)", "A company's details on a past date (e.g. on the contract date)", "Данные компании на прошлую дату (например, на дату контракта)"],
         ["d", "O listă cu datele care lipsesc", "A list of what data is missing", "Список недостающих данных"],
         ["e", "Descărcare în Excel/CSV", "Download in Excel/CSV", "Скачивание в Excel/CSV"],
         ["f", "Acces printr-un API", "Access through an API", "Доступ через API"]
       ] },
     { id: "Q8", type: "single",
-      ro: "Ce rată de actualizare a datelor ați prefera?", en: "How often would you prefer the data to be updated?", ru: "Какую частоту обновления данных вы бы предпочли?",
+      ro: "Cât de actuale trebuie să fie datele, cel puțin, pentru munca dvs.?", en: "At minimum, how up to date must the data be for your work?", ru: "Насколько свежими, как минимум, должны быть данные для вашей работы?",
       options: [
         ["daily", "Zilnic", "Daily", "Каждый день"],
         ["weekly", "Săptămânal", "Weekly", "Каждую неделю"],
@@ -157,29 +157,6 @@ window.SURVEY = {
         ["none", "Nu lucrez în prezent cu astfel de date", "I don't work with such data at the moment", "Сейчас не работаю с такими данными"],
         ["other", "Altele", "Other", "Другое"]
       ], exclusive: ["none"] },
-    { id: "QB4", type: "multi", part: "B",
-      ro: "Ce platforme utilizați în prezent pentru a găsi informații despre achizițiile publice?",
-      en: "Which platforms do you currently use to find information about public procurement?",
-      ru: "Какие платформы вы сейчас используете, чтобы найти информацию о государственных закупках?",
-      hint: { ro: "Puteți alege mai multe.", en: "You can choose several.", ru: "Можно выбрать несколько." },
-      options: [
-        ["dategov", "date.gov.md", "date.gov.md", "date.gov.md"],
-        ["mtender", "MTender", "MTender", "MTender"],
-        ["openmoney", "OpenMoney.md", "OpenMoney.md", "OpenMoney.md"],
-        ["sites", "Site-urile instituțiilor", "Institutions' websites", "Сайты учреждений"],
-        ["other", "Altele", "Other", "Другое"],
-        ["none", "Nu folosesc niciuna", "I don't use any", "Не пользуюсь ни одной"]
-      ], exclusive: ["none"] },
-    { id: "QB5", type: "single", part: "B",
-      ro: "Cât timp vă ia, în medie, să găsiți o informație concretă despre achiziții publice?",
-      en: "On average, how long does it take you to find a specific piece of information about public procurement?",
-      ru: "Сколько времени в среднем у вас уходит, чтобы найти конкретную информацию о государственных закупках?",
-      options: [
-        ["lt15", "Sub 15 minute", "Under 15 minutes", "Меньше 15 минут"],
-        ["15-60", "15–60 minute", "15–60 minutes", "15–60 минут"],
-        ["1-3h", "1–3 ore", "1–3 hours", "1–3 часа"],
-        ["gt3h", "Mai mult de 3 ore", "More than 3 hours", "Больше 3 часов"]
-      ] },
     { id: "QB6", type: "text", part: "B", optional: true,
       ro: "Ce informații vă este dificil să găsiți pe platformele date.gov.md și MTender?",
       en: "What information is hard for you to find on date.gov.md and MTender?",
@@ -193,11 +170,10 @@ window.SURVEY = {
                   ro: "Dacă da, descrieți pe scurt cazul (opțional).",
                   en: "If yes, briefly describe the case (optional).",
                   ru: "Если да, кратко опишите случай (необязательно)." } },
-    { id: "QB8", type: "multi", part: "B",
+    { id: "QB8", type: "single", part: "B",
       ro: "Care este cea mai mare dificultate în procesul de căutare a datelor necesare?",
       en: "What is the biggest difficulty when searching for the data you need?",
       ru: "Какая самая большая трудность при поиске нужных данных?",
-      hint: { ro: "Puteți alege mai multe.", en: "You can choose several.", ru: "Можно выбрать несколько." },
       options: [
         ["find", "Găsirea fișierului sau a setului de date potrivit", "Finding the right file or dataset", "Найти нужный файл или набор данных"],
         ["split", "Datele sunt împărțite în multe fișiere", "The data is split across many files", "Данные разбиты на много файлов"],
