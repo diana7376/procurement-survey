@@ -7,7 +7,7 @@
 // To add Daria's questions: fill in a QC entry and set enabled: true.
 
 window.SURVEY = {
-  version: "2026-11-21e",
+  version: "2026-11-21f",
   intro: {
     ro: { title: "Datele publice despre achiziții: cât de ușor le folosim?",
           body: "Acest chestionar face parte din trei lucrări de licență la Universitatea Tehnică a Moldovei. Vrem să aflăm cât de ușor găsesc oamenii informații despre banii publici: cine cumpără, ce cumpără, de la cine și cu cât. Durează aproximativ 7 minute și este anonim: nu vă cerem numele. Folosim doar totalurile, nu răspunsurile fiecărei persoane. Dacă acceptați o discuție scurtă, vă cerem un e-mail, păstrat separat și șters după aceea.",

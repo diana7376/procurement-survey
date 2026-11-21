@@ -25,7 +25,7 @@ If you change `Code.gs` later: Deploy → Manage deployments → edit → New ve
 
 **Live since 19 Nov 2026:** https://diana7376.github.io/procurement-survey/ (public repository `diana7376/procurement-survey`, branch `main`, root folder). Until `config.js` has the Apps Script URL, the live site runs in **test mode**: answers are not saved, so do not share the link before step 1 is done.
 
-To update the live site: change the files here in `Teza/survey-site/`, commit, then copy them into the `procurement-survey` repository (keep its `.nojekyll`) and push; Pages rebuilds in about a minute.
+To update the live site: change the files here in `Teza/survey-site/`, change `?v=…` on the four files in `index.html` (and `version` in `questions.js`) so browsers do not keep the old copy, commit, then copy them into the `procurement-survey` repository (keep its `.nojekyll`) and push; Pages rebuilds in about a minute.
 
 How it was set up:
 
