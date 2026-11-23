@@ -1,13 +1,13 @@
 # Survey site
 
 A static survey (HTML, CSS, JavaScript; no build step) for the team's validation survey. Answers go to a Google Sheet through Google Apps Script.
-Questions: `questions.js` (same content as `docs/survey-questions.md`).
+Questions: `questions.js` (same content as `team/survey/questions.md`).
 
 | File | What it is |
 |---|---|
 | `index.html`, `style.css` | Page (design "Focus card"): a thin project banner, one centred card with one question at a time |
 | `questions.js` | All questions in Romanian, Russian and English; the one-sentence project description on the start screen |
-| `app.js` | Survey engine: one question per screen, keys 1–9 and Enter, progress, sending |
+| `app.js` | Survey engine: one question per screen, keys 1–9 and Enter, progress, a question shown only after a given answer (`showIf`), "at most n" answers (`max`), sending |
 | `config.js` | The Google Apps Script URL (empty = test mode) |
 | `apps-script/Code.gs` | Receives answers and writes them to the sheet |
 
@@ -25,14 +25,14 @@ If you change `Code.gs` later: Deploy → Manage deployments → edit → New ve
 
 **Live since 19 Nov 2026:** https://diana7376.github.io/procurement-survey/ (public repository `diana7376/procurement-survey`, branch `main`, root folder). Until `config.js` has the Apps Script URL, the live site runs in **test mode**: answers are not saved, so do not share the link before step 1 is done.
 
-To update the live site: change the files here in `Teza/survey-site/`, change `?v=…` on the four files in `index.html` (and `version` in `questions.js`) so browsers do not keep the old copy, commit, then copy them into the `procurement-survey` repository (keep its `.nojekyll`) and push; Pages rebuilds in about a minute.
+To update the live site: change the files here in `Teza/team/survey/site/`, change `?v=…` on the four files in `index.html` (and `version` in `questions.js`) so browsers do not keep the old copy, commit, then copy them into the `procurement-survey` repository (keep its `.nojekyll`) and push; Pages rebuilds in about a minute.
 
 How it was set up:
 
 The `Teza` repository is **private**, and GitHub Pages on a free account works only for public repositories. Use a separate public repository with only this folder:
 
 1. On GitHub: New repository, e.g. `procurement-survey`, **Public**.
-2. Copy the contents of `survey-site/` into it (not the parent folder) and push.
+2. Copy the contents of `team/survey/site/` into it (not the parent folder) and push.
 3. Settings → Pages → Source: Deploy from a branch → `main` / `(root)` → Save.
 4. After about a minute the site is at `https://<user>.github.io/procurement-survey/`.
 
@@ -40,10 +40,10 @@ Nothing in this folder is private: no answers are stored in the repository. The 
 
 ## 3. Before launch
 
-- [ ] Daniel's and Daria's questions added in `questions.js` (set `enabled: true`) and in `docs/survey-questions.md`
+- [x] Daniel's and Daria's questions added (final team version, 23 Nov 2026) in `questions.js` and `team/survey/questions.md`
 - [ ] Romanian proofread
-- [ ] Pass rules fixed in `docs/survey-questions.md`
-- [ ] Pilot with 2 people on a phone and a laptop: about 7 minutes?
+- [ ] Pass rules fixed in `team/survey/questions.md`
+- [ ] Pilot with 2 people on a phone and a laptop: about 10 minutes?
 - [ ] Test rows deleted from the sheet
 - [ ] Open `?test` to try the site without sending anything
 
@@ -73,7 +73,7 @@ Answer codes did not change, so answers stay comparable; removed questions keep 
 
 Respondents are journalists, monitors and citizens, not IT people, so every question was rewritten in everyday words
 (RO, RU, EN). Answer codes did not change. The full wording before this rewrite is in Teza commit `73b589a`
-(`survey-site/questions.js`). The main changes:
+(`team/survey/site/questions.js`). The main changes:
 
 | Where | Before (RO) | Now (RO) |
 |---|---|---|
@@ -101,4 +101,48 @@ as before in plainer words; the pass rule "≥ 70% choose monthly or less often"
 
 Start screen (21 Nov 2026): the three audit numbers (25 kinds of records in one file, 217 institutions written in several
 ways, 84% of the money found by a name search) were removed; they meant little to someone who has never used this data.
-They are in Teza commit `73397da` and in `evidence/outputs/questions_and_facts.md`.
+They are in Teza commit `73397da` and in `thesis/analysis/outputs/questions_and_facts.md`.
+
+## Final team version (23 Nov 2026)
+
+Daria's proposal of 22 Nov 2026 (4 parts, 31 questions; file `Chestionar_RO_propunere_final.md`, made after the team's
+suggestions) replaced the 21 Nov version (`2026-11-21g`). Answers sent before carry version `2026-11-21g` in the sheet;
+analyse the two versions apart. New IDs: Q6a (shown only if Q6 = „Da”), Q12 (replaces Q9), QC1–QC5, QB13–QB17.
+QB3 and Q9 were removed; their IDs are not reused. The full 21 Nov text is in Teza commit `185ac8f` (`team/survey/site/questions.js`).
+
+Fixes made when the proposal was added (the rest is word for word):
+
+| Where | Proposal | On the site | Why |
+|---|---|---|---|
+| QB13 (24) | „…semnale de risc… Un semnal nu dovedește o încălcare…” | „…fapte neobișnuite, găsite automat de platformă? Un fapt neobișnuit nu înseamnă că ceva este greșit; arată doar ce iese din comun și ar putea merita o privire.” | Team rule (13 Oct 2026): neutral words, never risk, violation or suspicion |
+| QB14 (25) | „…chiar dacă unele sunt false alarme” | „…chiar dacă unele se dovedesc obișnuite la verificare” | Same rule |
+| QB15 (27) | „…semnale noi…” | „…contracte neobișnuite noi…” | Same rule; clearer for respondents |
+| Q6a (11) | „Nu am fost sigur(ă)…” | „Nu era clar dacă este vorba de aceeași instituție sau firmă” | No gendered brackets |
+| QB16 (28) | CSV · JSON | CSV (tabel simplu, se deschide și în Excel) · JSON (format pentru programatori) | Plain words for non-technical respondents |
+| Q12 (12) | – | „De obicei nu le verific” and „Nu folosesc astfel de date” cannot be combined with other answers | Same as „Nu am căutat” in Q3 |
+
+Wording on 21 Nov of every question that changed:
+
+| ID | Wording on 21 Nov (RO question — answers) | Now |
+|---|---|---|
+| Q1 | În ce calitate răspundeți? — Lucrez în presă · Lucrez într-un ONG sau urmăresc cheltuielile publice · Studiez sau fac cercetare · Lucrez în sectorul public · Lucrez în mediul de afaceri · Ca cetățean, din interes personal · Altceva | Question 1 |
+| Q2 | În ultimele 12 luni, ați căutat informații despre cum se cheltuie banii publici în Moldova? — Nu, niciodată · De 1–2 ori · De mai multe ori · Lunar sau mai des | Question 2 |
+| Q3 | Unde ați căutat? — date.gov.md (site-ul cu datele publice ale Guvernului) · MTender (site-ul licitațiilor publice) · OpenMoney.md · Site-urile instituțiilor · Articole de presă sau rapoarte ale ONG-urilor · În altă parte · Nu am căutat | Question 5 |
+| Q4 | Cât de greu a fost… — a) să găsesc informația de care aveam nevoie; b) să pun cap la cap date din mai mulți ani sau de la mai multe instituții; c) să recunosc aceeași instituție sau firmă când numele e scris diferit; d) să știu dacă datele sunt la zi; e) să verific de unde provine o cifră | Question 7 |
+| Q5 | Ultima dată când ați căutat, cât timp v-a luat până ați găsit răspunsul? — Sub 15 minute · 15–60 minute · 1–4 ore · Peste 4 ore · Nu am găsit răspunsul · Nu am căutat astfel de informații | Question 9 |
+| Q6 | Ați observat că aceeași instituție sau firmă apare scrisă în moduri diferite (de ex. „Primăria X” și „Primaria satului X”)? — Da · Nu · Nu știu | Question 10 |
+| Q7 | Cât de util ar fi pentru dvs. un site care… — a) arată toate contractele unei firme sau instituții la un loc, chiar dacă numele e scris diferit; b) vă permite să verificați orice cifră în documentul oficial din care provine; c) arată datele unei firme așa cum erau la o anumită dată (de ex. la semnarea contractului); d) spune clar ce date lipsesc; e) permite descărcarea datelor într-un tabel Excel; f) permite programatorilor să preia datele automat în aplicațiile lor (API) | Question 16 |
+| Q8 | Cât de vechi pot fi datele, ca să vă fie încă de folos? — Cel mult o zi · Cel mult o săptămână · Cel mult o lună · Pot fi și de acum câteva luni | Question 18 |
+| Q9 | Ați avea mai multă încredere într-o cifră dacă ați putea deschide documentul oficial din care provine? — Da, mai multă încredere · Nicio diferență · Nu știu | Removed |
+| QB1 | Cât de ușor vă descurcați cu tabele și cifre (de ex. în Excel)? — Mă descurc doar cu lucruri simple · Fac calcule și filtre fără probleme · Fac analize complexe | Question 3 |
+| QB2 | Pentru ce ați folosi informațiile despre achizițiile publice? — Cercetare · Articole de presă · Urmărirea modului în care se cheltuie banii publici · Participarea firmei mele la licitații · Studii sau lucrări universitare · Altceva | Question 4 |
+| QB3 | Ce fel de informații despre achiziții publice folosiți acum? — Contracte semnate · Anunțuri de licitații · Informații despre firme · Bugete și cheltuieli publice · Nu folosesc astfel de informații acum · Altceva | Removed |
+| QB6 | Ce informații despre achizițiile publice vă este greu să găsiți? — text | Question 13 |
+| QB7 | Vi s-a întâmplat să nu găsiți o informație pentru că datele erau împrăștiate sau greu de înțeles? — Da · Nu | Question 6 |
+| QB8 | Care este cea mai mare greutate când căutați astfel de informații? — Să găsesc unde sunt datele · Datele sunt împărțite în multe fișiere · Fișierele sunt în forme diferite (Excel, PDF etc.) · Aceeași instituție sau firmă apare cu nume diferite · Nu știu dacă datele sunt la zi · Nu pot verifica de unde provine o cifră · Altceva | Question 8 |
+| QB9 | Ați folosi un site care arată datele statului într-un mod ușor de înțeles? — Da · Probabil · Nu | Question 14 |
+| QB10 | Cum vă este cel mai ușor să înțelegeți cifrele? — Grafice · Tabele · Explicații în cuvinte · Hărți · Toate la un loc · Altceva | Question 19 |
+| QB11 | Ce v-ar ajuta pe un astfel de site? — Căutare după mai multe criterii deodată · Filtre (de ex. după an, raion sau instituție) · Descărcare în Excel · Grafice pe care le pot explora · Mesaje când apar date noi · Acces pentru programatori (API) · Altceva | Question 21 |
+| QB12 | Cât ați aștepta, cel mult, până se încarcă o pagină cu rezultate? — Cel mult 3 secunde · 3–10 secunde · Până la 30 de secunde · Mai mult, dacă primesc toate rezultatele | Question 23 |
+| Q10 | Ce ați vrea să aflați despre achizițiile publice din Moldova? — text | Question 30 |
+| Q11 | Ați accepta o scurtă discuție online (15–20 de minute) cu noi? — Da · Nu | Question 31 |

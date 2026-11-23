@@ -1,17 +1,17 @@
-// Survey engine: one question per screen, RO/EN, skip logic, sends one JSON row to Google Sheets.
+// Survey engine: one question per screen, RO/RU/EN, skip logic (showIf), "at most n" answers (max), sends one JSON row to Google Sheets.
 (function () {
   const S = window.SURVEY, END = (window.SURVEY_ENDPOINT || "").trim();
   const TEST = !END || new URLSearchParams(location.search).has("test");
   const UI = {
     ro: { next: "Continuă", back: "Înapoi", send: "Trimite", sending: "Se trimite…", of: "din", choose: "Alegeți un răspuns.",
           rows: "Răspundeți la fiecare rând.", na: "n-am încercat", email: "Adresa de e-mail nu pare corectă.",
-          fail: "Nu am putut trimite. Verificați conexiunea și încercați din nou.", optional: "opțional", keys: "Puteți folosi tastele 1–9 și Enter." },
+          fail: "Nu am putut trimite. Verificați conexiunea și încercați din nou.", optional: "opțional", keys: "Puteți folosi tastele 1–9 și Enter.", max: n => `Puteți alege cel mult ${n}.` },
     en: { next: "Continue", back: "Back", send: "Send", sending: "Sending…", of: "of", choose: "Choose an answer.",
           rows: "Answer every row.", na: "didn't try", email: "This e-mail address doesn't look right.",
-          fail: "We couldn't send it. Check your connection and try again.", optional: "optional", keys: "You can use keys 1–9 and Enter." },
+          fail: "We couldn't send it. Check your connection and try again.", optional: "optional", keys: "You can use keys 1–9 and Enter.", max: n => `You can choose up to ${n}.` },
     ru: { next: "Далее", back: "Назад", send: "Отправить", sending: "Отправка…", of: "из", choose: "Выберите ответ.",
           rows: "Ответьте на каждую строку.", na: "нет опыта", email: "Адрес e-mail выглядит неправильно.",
-          fail: "Не удалось отправить. Проверьте подключение и попробуйте снова.", optional: "необязательно", keys: "Можно использовать клавиши 1–9 и Enter." }
+          fail: "Не удалось отправить. Проверьте подключение и попробуйте снова.", optional: "необязательно", keys: "Можно использовать клавиши 1–9 и Enter.", max: n => `Можно выбрать не больше ${n}.` }
   };
   const COL = { ro: 1, en: 2, ru: 3 };
   const L = o => o[COL[lang]] || o[1];          // label of an option or row in the current language
@@ -72,7 +72,7 @@
       h += `<div class="ends" aria-hidden="true"><span>1 · ${esc(q.low[lang])}</span><span>5 · ${esc(q.high[lang])}</span></div><div class="scale">` + q.rows.map(r => {
         const key = q.id + r[0], v = answers[key];
         const btn = (val, label, cls = "") => `<button type="button" class="${cls}" role="radio" aria-checked="${v === val}" data-k="${key}" data-v="${val}">${label}</button>`;
-        return `<div class="srow" role="radiogroup" aria-label="${esc(L(r))}"><span class="lbl">${esc(L(r))}</span><div class="dots">${[1, 2, 3, 4, 5].map(n => btn(n, n)).join("")}${q.na ? btn("na", UI[lang].na, "na") : ""}</div></div>`;
+        return `<div class="srow" role="radiogroup" aria-label="${esc(L(r))}"><span class="lbl">${esc(L(r))}</span><div class="dots">${[1, 2, 3, 4, 5].map(n => btn(n, n)).join("")}${q.na ? btn("na", q.naLabel ? q.naLabel[lang] : UI[lang].na, "na") : ""}</div></div>`;
       }).join("") + `</div>`;
     }
     if (q.type === "text") h += `<textarea id="txt" maxlength="1000" aria-labelledby="qt">${esc(answers[q.id] || "")}</textarea>`;
@@ -94,7 +94,12 @@
         const ex = q.exclusive || [];
         if (a.has(v)) a.delete(v);
         else if (ex.includes(v)) { a.clear(); a.add(v); }                 // "none" clears the other answers
-        else { ex.forEach(x => a.delete(x)); a.add(v); }                  // any other answer clears "none"
+        else {
+          ex.forEach(x => a.delete(x));                                   // any other answer clears "none"
+          if (q.max && a.size >= q.max) { const e = $("err"); e.textContent = UI[lang].max(q.max); e.hidden = false; return; }
+          a.add(v);
+        }
+        $("err").hidden = true;
         answers[q.id] = [...a];
         sc.querySelectorAll(".opt").forEach(x => x.setAttribute("aria-checked", a.has(x.dataset.v))); refresh(q);
       } else {
