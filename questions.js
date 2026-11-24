@@ -1,26 +1,26 @@
 // Survey questions. Same content as shared/survey/questions.md — change both together.
 // Final team version of 23 Nov 2026 (Daria's proposal of 22 Nov, "Chestionar_RO_propunere_final.md", with small fixes:
 // neutral wording in QB13/QB14, no gendered "(ă)" in Q6a, plain words for CSV/JSON in QB16, "none" answers exclusive in Q12).
-// QB14 and QB15 reworded on 24 Nov 2026.
+// QB14 reworded on 24 Nov 2026.
 // Plain language: respondents are journalists, monitors and citizens, not IT people. When a technical word is needed
 // (API, CSV), explain it in everyday words.
 // Languages: ro (default), ru, en. Options and rows: [code, ro, en, ru].
 // Types: single, multi (optional exclusive: codes that cannot be combined with others; optional max: at most n answers),
 // scale (rows rated 1–5, optional "na" with optional naLabel), text, interview. showIf(answers) hides a question.
 // Answer codes are stable; they become the column names and values in the Google Sheet. The "version" column tells
-// answers to earlier wordings (2026-11-21g, 2026-11-23a, 2026-11-24a/b/c) apart from this one.
+// answers to earlier wordings (2026-11-21g, 2026-11-23a, 2026-11-24a to d) apart from this one.
 
 window.SURVEY = {
-  version: "2026-11-24d",
+  version: "2026-11-24e",
   intro: {
     ro: { title: "Datele publice despre achiziții: cât de ușor le folosim?",
-          body: "Acest chestionar face parte din trei lucrări de licență la Universitatea Tehnică a Moldovei. Vrem să aflăm cât de ușor găsesc oamenii informații despre banii publici: cine cumpără, ce cumpără, de la cine și cu cât. Durează aproximativ 10 minute și este anonim: nu vă cerem numele. Folosim doar totalurile, nu răspunsurile fiecărei persoane. Dacă acceptați o discuție scurtă, vă cerem un e-mail, păstrat separat și șters după aceea.",
+          body: "Acest chestionar face parte din trei lucrări de licență la Universitatea Tehnică a Moldovei. Vrem să aflăm cât de ușor găsesc oamenii informații despre banii publici: cine cumpără, ce cumpără, de la cine și cu cât. Durează aproximativ 10 minute și este anonim: nu vă cerem numele. Folosim doar totalurile, nu răspunsurile fiecărei persoane.",
           start: "Începe" },
     ru: { title: "Открытые данные о госзакупках: насколько легко ими пользоваться?",
-          body: "Этот опрос — часть трёх дипломных работ в Техническом университете Молдовы. Мы хотим понять, насколько легко людям находить информацию о государственных деньгах: кто покупает, что покупает, у кого и за сколько. Опрос займёт около 10 минут и анонимен: мы не спрашиваем ваше имя. Мы используем только общие итоги, а не ответы отдельных людей. Если вы согласитесь на короткую беседу, мы попросим e-mail; он хранится отдельно и потом удаляется.",
+          body: "Этот опрос — часть трёх дипломных работ в Техническом университете Молдовы. Мы хотим понять, насколько легко людям находить информацию о государственных деньгах: кто покупает, что покупает, у кого и за сколько. Опрос займёт около 10 минут и анонимен: мы не спрашиваем ваше имя. Мы используем только общие итоги, а не ответы отдельных людей.",
           start: "Начать" },
     en: { title: "Public procurement data: how easy is it to use?",
-          body: "This survey is part of three bachelor theses at the Technical University of Moldova. We want to know how easily people find information about public money: who buys, what, from whom and for how much. It takes about 10 minutes and is anonymous: we do not ask for your name. We only use totals, never one person's answers. If you agree to a short talk, we ask for an e-mail address, kept separately and deleted afterwards.",
+          body: "This survey is part of three bachelor theses at the Technical University of Moldova. We want to know how easily people find information about public money: who buys, what, from whom and for how much. It takes about 10 minutes and is anonymous: we do not ask for your name. We only use totals, never one person's answers.",
           start: "Start" }
   },
   about: {
@@ -55,7 +55,7 @@ window.SURVEY = {
               ru: "Например: что купила примэрия или больница, у какой фирмы и по какой цене." },
       options: [
         ["never", "Nu, niciodată", "No, never", "Нет, ни разу"],
-        ["1-2", "De 1–2 ori", "1–2 times", "1–2 раза"],
+        ["1to2", "De 1–2 ori", "1–2 times", "1–2 раза"],
         ["several", "De mai multe ori", "Several times", "Несколько раз"],
         ["monthly", "Lunar sau mai des", "Monthly or more often", "Ежемесячно или чаще"]
       ] },
@@ -350,7 +350,8 @@ window.SURVEY = {
         ["report", "Posibilitatea de a raporta o eroare în date", "A way to report an error in the data", "Возможность сообщить об ошибке в данных"],
         ["other", "Altceva", "Something else", "Другое"]
       ] },
-    { id: "QB15", type: "multi", part: "B",
+    // QB15 taken out on 24 Nov 2026 (Diana). Code kept, not reused.
+    { id: "QB15", type: "multi", part: "B", enabled: false,
       ro: "Cum ați dori să primiți notificări despre contracte neobișnuite noi sau date noi?",
       en: "How would you like to be notified about new unusual contracts or new data?",
       ru: "Как бы вы хотели получать уведомления о новых необычных контрактах или новых данных?",

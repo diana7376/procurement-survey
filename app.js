@@ -107,7 +107,6 @@
         if (q.type === "interview") { render(); if (v === "yes") $("email")?.focus(); return; }
         if (q.followUp) { render(); if (v === q.followUp.on) $("fu")?.focus(); return; }
         sc.querySelectorAll(".opt").forEach(x => x.setAttribute("aria-checked", x === b)); refresh(q);
-        if (!matchMedia("(prefers-reduced-motion: reduce)").matches) setTimeout(() => { if (answers[q.id] === v) go(1); }, 280);
       }
     });
     sc.querySelectorAll(".dots button").forEach(b => b.onclick = () => {

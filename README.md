@@ -171,3 +171,9 @@ numbers above 9 in the sections above are those of the 31-question version. The 
 **Version `2026-11-24d`:** QC5 („Platforma va marca automat unele contracte ca neobișnuite… Ce v-ar ajuta să aveți încredere că
 un astfel de contract merită verificat?”) was taken out (`enabled: false`); QB14, the question just before it, stays in its
 place. The survey has 28 questions.
+
+**Version `2026-11-24e`:** QB15 („Cum ați dori să primiți notificări…”) was taken out (`enabled: false`): 27 questions. A question
+with one answer no longer moves on by itself; people press „Continuă”. The sentence about the e-mail („Dacă acceptați o
+discuție scurtă, vă cerem un e-mail, păstrat separat și șters după aceea.”) was taken out of the start screen in all three
+languages; Q11 still says what the e-mail is used for and that it is kept apart from the answers. The Q2 code `1-2` became
+`1to2`, because Google Sheets and Excel can turn `1-2` into a date; in older rows, `1-2` or a date in Q2 means „De 1–2 ori”.
