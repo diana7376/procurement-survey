@@ -158,3 +158,7 @@ Wording on 21 Nov of every question that changed:
 QB13 row codes are sheet columns, not the order on the screen. The codes a–f keep their meaning, so old and new answers
 do not mix; the new rows are g–j. Order on the screen: a, b, c, g, h, i, j, d, e, f. QB14 and QB15 answer codes did not change.
 Row b no longer says „prin acte adiționale”.
+
+**Later on 24 Nov (version `2026-11-24b`):** QB13 (24) went back to its 6 rows of `2026-11-23a`, word for word; QB14 and QB15
+keep the new wording. Answers with version `2026-11-24a` may have values in QB13g–j; these codes are not reused. Full text
+of the 10 rows: Teza commit `831651c`.

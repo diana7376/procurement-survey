@@ -1,17 +1,17 @@
 // Survey questions. Same content as shared/survey/questions.md — change both together.
 // Final team version of 23 Nov 2026 (Daria's proposal of 22 Nov, "Chestionar_RO_propunere_final.md", with small fixes:
 // neutral wording in QB13/QB14, no gendered "(ă)" in Q6a, plain words for CSV/JSON in QB16, "none" answers exclusive in Q12).
-// QB13, QB14 and QB15 reworded on 24 Nov 2026 (QB13 now has 10 rows).
+// QB14 and QB15 reworded on 24 Nov 2026.
 // Plain language: respondents are journalists, monitors and citizens, not IT people. When a technical word is needed
 // (API, CSV), explain it in everyday words.
 // Languages: ro (default), ru, en. Options and rows: [code, ro, en, ru].
 // Types: single, multi (optional exclusive: codes that cannot be combined with others; optional max: at most n answers),
 // scale (rows rated 1–5, optional "na" with optional naLabel), text, interview. showIf(answers) hides a question.
 // Answer codes are stable; they become the column names and values in the Google Sheet. The "version" column tells
-// answers to earlier wordings (2026-11-21g, 2026-11-23a) apart from this one.
+// answers to earlier wordings (2026-11-21g, 2026-11-23a, 2026-11-24a) apart from this one.
 
 window.SURVEY = {
-  version: "2026-11-24a",
+  version: "2026-11-24b",
   intro: {
     ro: { title: "Datele publice despre achiziții: cât de ușor le folosim?",
           body: "Acest chestionar face parte din trei lucrări de licență la Universitatea Tehnică a Moldovei. Vrem să aflăm cât de ușor găsesc oamenii informații despre banii publici: cine cumpără, ce cumpără, de la cine și cu cât. Durează aproximativ 10 minute și este anonim: nu vă cerem numele. Folosim doar totalurile, nu răspunsurile fiecărei persoane. Dacă acceptați o discuție scurtă, vă cerem un e-mail, păstrat separat și șters după aceea.",
@@ -315,18 +315,14 @@ window.SURVEY = {
               ru: "Необычный факт не означает, что что-то не так; он лишь показывает, что выделяется и может заслуживать внимания." },
       low: { ro: "deloc util", en: "not useful", ru: "бесполезно" }, high: { ro: "foarte util", en: "very useful", ru: "очень полезно" },
       naLabel: { ro: "Nu știu", en: "Not sure", ru: "Не знаю" },
-      // Row codes are sheet columns: a, b, c, d, e, f keep their meaning from 2026-11-23a (b and f in plainer words); g–j are new. Shown in this order.
+      // Codes g–j were used for rows shown only in version 2026-11-24a; do not reuse them.
       rows: [
-        ["a", "Un singur furnizor primește peste jumătate din banii cheltuiți de o instituție într-un an", "One supplier receives more than half of the money an institution spends in a year", "Один поставщик получает больше половины денег, потраченных учреждением за год"],
-        ["b", "Prețul final al contractului este cu peste 15% mai mare decât cel de la semnare", "The final price of the contract is more than 15% higher than at signing", "Итоговая цена контракта более чем на 15% выше цены при подписании"],
-        ["c", "Contractul a fost semnat cu o firmă care nu mai exista legal la data semnării (era deja închisă)", "The contract was signed with a company that no longer legally existed on the signing date (it was already closed)", "Контракт подписан с фирмой, которая на дату подписания уже юридически не существовала (была закрыта)"],
-        ["g", "Mai multe firme care vând aceleiași instituții sunt înregistrate la aceeași adresă", "Several companies that sell to the same institution are registered at the same address", "Несколько фирм, продающих одному и тому же учреждению, зарегистрированы по одному адресу"],
-        ["h", "Contractul a fost semnat cu o firmă înființată cu mai puțin de 3 luni înainte", "The contract was signed with a company founded less than 3 months earlier", "Контракт подписан с фирмой, созданной менее чем за 3 месяца до этого"],
-        ["i", "Peste o treime din banii cheltuiți de o instituție într-un an sunt cheltuiți în noiembrie și decembrie", "More than a third of the money an institution spends in a year is spent in November and December", "Больше трети денег, потраченных учреждением за год, приходится на ноябрь и декабрь"],
-        ["j", "Instituția a cumpărat direct de la o firmă aleasă, fără să anunțe public că vrea să cumpere", "The institution bought directly from a chosen company, without announcing publicly that it wanted to buy", "Учреждение купило напрямую у выбранной фирмы, не объявив публично о намерении купить"],
-        ["d", "La o licitație s-a depus o singură ofertă (a participat o singură firmă)", "Only one bid was submitted in a tender (only one company took part)", "На тендер подано только одно предложение (участвовала одна фирма)"],
-        ["e", "Firmelor li s-au dat mai puțin de 10 zile ca să depună o ofertă", "Companies were given less than 10 days to submit a bid", "Фирмам дали меньше 10 дней на подачу предложения"],
-        ["f", "Prețul contractului este mult mai mare sau mai mic decât al altor contracte pentru același tip de produs sau serviciu", "The contract price is much higher or lower than in other contracts for the same type of product or service", "Цена контракта намного выше или ниже, чем в других контрактах на тот же вид товара или услуги"]
+        ["a", "Un singur furnizor primește peste jumătate din valoarea achizițiilor unei instituții într-un an", "One supplier receives more than half of an institution's purchase value in a year", "Один поставщик получает больше половины стоимости закупок учреждения за год"],
+        ["b", "Valoarea contractului a crescut cu peste 15% după semnare, prin acte adiționale", "The contract value rose by more than 15% after signing, through amendments", "Сумма контракта выросла более чем на 15% после подписания через дополнительные соглашения"],
+        ["c", "Contractul a fost semnat cu o firmă care era deja lichidată la data semnării", "The contract was signed with a company already liquidated on the signing date", "Контракт подписан с фирмой, уже ликвидированной на дату подписания"],
+        ["d", "Licitație cu o singură ofertă", "A tender with only one bid", "Тендер с одним предложением"],
+        ["e", "Termen de depunere a ofertelor mai scurt de 10 zile", "Less than 10 days to submit bids", "Срок подачи предложений меньше 10 дней"],
+        ["f", "Valoare neobișnuit de mare sau de mică față de contractele similare (același tip de produs sau serviciu)", "A value unusually high or low compared with similar contracts (same type of product or service)", "Необычно большая или маленькая сумма по сравнению с похожими контрактами (тот же вид товара или услуги)"]
       ] },
     { id: "QB14", type: "single", part: "B",
       ro: "Dacă platforma ar semnala automat contracte neobișnuite, ce ați prefera?",
