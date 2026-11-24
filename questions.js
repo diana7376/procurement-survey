@@ -8,10 +8,10 @@
 // Types: single, multi (optional exclusive: codes that cannot be combined with others; optional max: at most n answers),
 // scale (rows rated 1–5, optional "na" with optional naLabel), text, interview. showIf(answers) hides a question.
 // Answer codes are stable; they become the column names and values in the Google Sheet. The "version" column tells
-// answers to earlier wordings (2026-11-21g, 2026-11-23a, 2026-11-24a/b) apart from this one.
+// answers to earlier wordings (2026-11-21g, 2026-11-23a, 2026-11-24a/b/c) apart from this one.
 
 window.SURVEY = {
-  version: "2026-11-24c",
+  version: "2026-11-24d",
   intro: {
     ro: { title: "Datele publice despre achiziții: cât de ușor le folosim?",
           body: "Acest chestionar face parte din trei lucrări de licență la Universitatea Tehnică a Moldovei. Vrem să aflăm cât de ușor găsesc oamenii informații despre banii publici: cine cumpără, ce cumpără, de la cine și cu cât. Durează aproximativ 10 minute și este anonim: nu vă cerem numele. Folosim doar totalurile, nu răspunsurile fiecărei persoane. Dacă acceptați o discuție scurtă, vă cerem un e-mail, păstrat separat și șters după aceea.",
@@ -335,7 +335,8 @@ window.SURVEY = {
         ["many", "Cât mai multe semnale, chiar dacă unele nu vor fi probleme reale", "As many marks as possible, even if some will not be real problems", "Как можно больше отметок, даже если некоторые не окажутся реальными проблемами"],
         ["nopref", "Nu am o preferință", "No preference", "Нет предпочтения"]
       ] },
-    { id: "QC5", type: "multi", part: "C", max: 3,
+    // QC5 taken out on 24 Nov 2026 (Diana): QB14 stays in its place. Codes kept, not reused.
+    { id: "QC5", type: "multi", part: "C", max: 3, enabled: false,
       ro: "Platforma va marca automat unele contracte ca neobișnuite, de exemplu un contract mult mai scump decât contractele similare. Ce v-ar ajuta să aveți încredere că un astfel de contract merită verificat?",
       en: "The platform will automatically mark some contracts as unusual, for example a contract much more expensive than similar ones. What would help you trust that such a contract is worth checking?",
       ru: "Платформа будет автоматически отмечать некоторые контракты как необычные, например контракт намного дороже похожих. Что помогло бы вам поверить, что такой контракт стоит проверить?",

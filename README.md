@@ -167,3 +167,7 @@ of the 10 rows: Teza commit `831651c`.
 apare cu denumiri diferite…”) was taken out, and with it Q6a („Ce probleme ați întâmpinat?”), which was shown only after „Da”
 in Q6. Both are kept in `questions.js` with `enabled: false`. The survey has 29 questions, the same for everyone; question
 numbers above 9 in the sections above are those of the 31-question version. The pass rule for P2 now uses Q4c only.
+
+**Version `2026-11-24d`:** QC5 („Platforma va marca automat unele contracte ca neobișnuite… Ce v-ar ajuta să aveți încredere că
+un astfel de contract merită verificat?”) was taken out (`enabled: false`); QB14, the question just before it, stays in its
+place. The survey has 28 questions.
