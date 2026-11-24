@@ -1,7 +1,7 @@
 # Survey site
 
 A static survey (HTML, CSS, JavaScript; no build step) for the team's validation survey. Answers go to a Google Sheet through Google Apps Script.
-Questions: `questions.js` (same content as `team/survey/questions.md`).
+Questions: `questions.js` (same content as `shared/survey/questions.md`).
 
 | File | What it is |
 |---|---|
@@ -25,14 +25,14 @@ If you change `Code.gs` later: Deploy → Manage deployments → edit → New ve
 
 **Live since 19 Nov 2026:** https://diana7376.github.io/procurement-survey/ (public repository `diana7376/procurement-survey`, branch `main`, root folder). Until `config.js` has the Apps Script URL, the live site runs in **test mode**: answers are not saved, so do not share the link before step 1 is done.
 
-To update the live site: change the files here in `Teza/team/survey/site/`, change `?v=…` on the four files in `index.html` (and `version` in `questions.js`) so browsers do not keep the old copy, commit, then copy them into the `procurement-survey` repository (keep its `.nojekyll`) and push; Pages rebuilds in about a minute.
+To update the live site: change the files here in `Teza/shared/survey/site/`, change `?v=…` on the four files in `index.html` (and `version` in `questions.js`) so browsers do not keep the old copy, commit, then copy them into the `procurement-survey` repository (keep its `.nojekyll`) and push; Pages rebuilds in about a minute.
 
 How it was set up:
 
 The `Teza` repository is **private**, and GitHub Pages on a free account works only for public repositories. Use a separate public repository with only this folder:
 
 1. On GitHub: New repository, e.g. `procurement-survey`, **Public**.
-2. Copy the contents of `team/survey/site/` into it (not the parent folder) and push.
+2. Copy the contents of `shared/survey/site/` into it (not the parent folder) and push.
 3. Settings → Pages → Source: Deploy from a branch → `main` / `(root)` → Save.
 4. After about a minute the site is at `https://<user>.github.io/procurement-survey/`.
 
@@ -40,9 +40,9 @@ Nothing in this folder is private: no answers are stored in the repository. The 
 
 ## 3. Before launch
 
-- [x] Daniel's and Daria's questions added (final team version, 23 Nov 2026) in `questions.js` and `team/survey/questions.md`
+- [x] Daniel's and Daria's questions added (final team version, 23 Nov 2026) in `questions.js` and `shared/survey/questions.md`
 - [ ] Romanian proofread
-- [ ] Pass rules fixed in `team/survey/questions.md`
+- [ ] Pass rules fixed in `shared/survey/questions.md`
 - [ ] Pilot with 2 people on a phone and a laptop: about 10 minutes?
 - [ ] Test rows deleted from the sheet
 - [ ] Open `?test` to try the site without sending anything
@@ -73,7 +73,7 @@ Answer codes did not change, so answers stay comparable; removed questions keep 
 
 Respondents are journalists, monitors and citizens, not IT people, so every question was rewritten in everyday words
 (RO, RU, EN). Answer codes did not change. The full wording before this rewrite is in Teza commit `73b589a`
-(`team/survey/site/questions.js`). The main changes:
+(`shared/survey/site/questions.js`). The main changes:
 
 | Where | Before (RO) | Now (RO) |
 |---|---|---|
@@ -101,14 +101,14 @@ as before in plainer words; the pass rule "≥ 70% choose monthly or less often"
 
 Start screen (21 Nov 2026): the three audit numbers (25 kinds of records in one file, 217 institutions written in several
 ways, 84% of the money found by a name search) were removed; they meant little to someone who has never used this data.
-They are in Teza commit `73397da` and in `thesis/analysis/outputs/questions_and_facts.md`.
+They are in Teza commit `73397da` and in `part-a-data/analysis/outputs/questions_and_facts.md`.
 
 ## Final team version (23 Nov 2026)
 
 Daria's proposal of 22 Nov 2026 (4 parts, 31 questions; file `Chestionar_RO_propunere_final.md`, made after the team's
 suggestions) replaced the 21 Nov version (`2026-11-21g`). Answers sent before carry version `2026-11-21g` in the sheet;
 analyse the two versions apart. New IDs: Q6a (shown only if Q6 = „Da”), Q12 (replaces Q9), QC1–QC5, QB13–QB17.
-QB3 and Q9 were removed; their IDs are not reused. The full 21 Nov text is in Teza commit `185ac8f` (`team/survey/site/questions.js`).
+QB3 and Q9 were removed; their IDs are not reused. The full 21 Nov text is in Teza commit `185ac8f` (`shared/survey/site/questions.js`).
 
 Fixes made when the proposal was added (the rest is word for word):
 
@@ -146,3 +146,15 @@ Wording on 21 Nov of every question that changed:
 | QB12 | Cât ați aștepta, cel mult, până se încarcă o pagină cu rezultate? — Cel mult 3 secunde · 3–10 secunde · Până la 30 de secunde · Mai mult, dacă primesc toate rezultatele | Question 23 |
 | Q10 | Ce ați vrea să aflați despre achizițiile publice din Moldova? — text | Question 30 |
 | Q11 | Ați accepta o scurtă discuție online (15–20 de minute) cu noi? — Da · Nu | Question 31 |
+
+## Questions 24, 25 and 27 reworded (24 Nov 2026, version `2026-11-24a`)
+
+| Where | Before (`2026-11-23a`) | Now |
+|---|---|---|
+| QB13 (24) | 6 rows: a) Un singur furnizor primește peste jumătate din valoarea achizițiilor unei instituții într-un an; b) Valoarea contractului a crescut cu peste 15% după semnare, prin acte adiționale; c) Contractul a fost semnat cu o firmă care era deja lichidată la data semnării; d) Licitație cu o singură ofertă; e) Termen de depunere a ofertelor mai scurt de 10 zile; f) Valoare neobișnuit de mare sau de mică față de contractele similare | 10 rows in plainer words; new: g) same address, h) company founded less than 3 months earlier, i) November–December, j) direct purchase without a public announcement |
+| QB14 (25) | „…aproape toate justificate, chiar dacă unele cazuri ar fi ratate”; „…chiar dacă unele se dovedesc obișnuite la verificare” | „…aproape toate corecte, chiar dacă unele cazuri neobișnuite nu vor fi semnalate”; „…chiar dacă unele nu vor fi probleme reale” |
+| QB15 (27) | Cum ați dori să aflați despre contracte neobișnuite noi sau date noi? | Cum ați dori să primiți notificări despre contracte neobișnuite noi sau date noi? (asked as „să fiți notificat(ă)”; no gendered brackets) |
+
+QB13 row codes are sheet columns, not the order on the screen. The codes a–f keep their meaning, so old and new answers
+do not mix; the new rows are g–j. Order on the screen: a, b, c, g, h, i, j, d, e, f. QB14 and QB15 answer codes did not change.
+Row b no longer says „prin acte adiționale”.
