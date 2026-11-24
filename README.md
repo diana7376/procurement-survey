@@ -162,3 +162,8 @@ Row b no longer says „prin acte adiționale”.
 **Later on 24 Nov (version `2026-11-24b`):** QB13 (24) went back to its 6 rows of `2026-11-23a`, word for word; QB14 and QB15
 keep the new wording. Answers with version `2026-11-24a` may have values in QB13g–j; these codes are not reused. Full text
 of the 10 rows: Teza commit `831651c`.
+
+**Version `2026-11-24c`:** Q6 („Ați avut dificultăți în găsirea sau utilizarea datelor pentru că aceeași instituție sau firmă
+apare cu denumiri diferite…”) was taken out, and with it Q6a („Ce probleme ați întâmpinat?”), which was shown only after „Da”
+in Q6. Both are kept in `questions.js` with `enabled: false`. The survey has 29 questions, the same for everyone; question
+numbers above 9 in the sections above are those of the 31-question version. The pass rule for P2 now uses Q4c only.

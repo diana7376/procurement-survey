@@ -8,10 +8,10 @@
 // Types: single, multi (optional exclusive: codes that cannot be combined with others; optional max: at most n answers),
 // scale (rows rated 1–5, optional "na" with optional naLabel), text, interview. showIf(answers) hides a question.
 // Answer codes are stable; they become the column names and values in the Google Sheet. The "version" column tells
-// answers to earlier wordings (2026-11-21g, 2026-11-23a, 2026-11-24a) apart from this one.
+// answers to earlier wordings (2026-11-21g, 2026-11-23a, 2026-11-24a/b) apart from this one.
 
 window.SURVEY = {
-  version: "2026-11-24b",
+  version: "2026-11-24c",
   intro: {
     ro: { title: "Datele publice despre achiziții: cât de ușor le folosim?",
           body: "Acest chestionar face parte din trei lucrări de licență la Universitatea Tehnică a Moldovei. Vrem să aflăm cât de ușor găsesc oamenii informații despre banii publici: cine cumpără, ce cumpără, de la cine și cu cât. Durează aproximativ 10 minute și este anonim: nu vă cerem numele. Folosim doar totalurile, nu răspunsurile fiecărei persoane. Dacă acceptați o discuție scurtă, vă cerem un e-mail, păstrat separat și șters după aceea.",
@@ -149,12 +149,13 @@ window.SURVEY = {
         ["gaveup", "De obicei nu găsesc răspunsul", "I usually don't find the answer", "Обычно не нахожу ответ"],
         ["notsearched", "Nu am căutat astfel de informații", "I haven't looked for such information", "Такую информацию не искали"]
       ] },
-    { id: "Q6", type: "single", part: "A",
+    // Q6 taken out on 24 Nov 2026 (Diana); Q6a goes with it, it was shown only after Q6 = "yes". Codes kept, not reused.
+    { id: "Q6", type: "single", part: "A", enabled: false,
       ro: "Ați avut dificultăți în găsirea sau utilizarea datelor pentru că aceeași instituție sau firmă apare cu denumiri diferite (de ex. „Primăria X” și „Primaria satului X”)?",
       en: "Have you had difficulty finding or using data because the same institution or company appears under different names (e.g. \"Town Hall X\" and \"X village town hall\")?",
       ru: "Были ли у вас трудности с поиском или использованием данных из-за того, что одно и то же учреждение или фирма встречается под разными названиями (например, «Примэрия X» и «Примэрия села X»)?",
       options: [["yes", "Da", "Yes", "Да"], ["no", "Nu", "No", "Нет"], ["unsure", "Nu știu", "Not sure", "Не знаю"]] },
-    { id: "Q6a", type: "multi", part: "A", showIf: a => a.Q6 === "yes",
+    { id: "Q6a", type: "multi", part: "A", enabled: false, showIf: a => a.Q6 === "yes",
       ro: "Ce probleme ați întâmpinat?", en: "What problems did you run into?", ru: "С какими проблемами вы столкнулись?",
       hint: { ro: "Puteți alege mai multe.", en: "You can choose several.", ru: "Можно выбрать несколько." },
       options: [
